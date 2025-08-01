@@ -1,0 +1,12 @@
+node_modules
+.git
+.next
+.gitignore
+README.md
+Dockerfile*
+docker-compose*
+.dockerignore
+.env*
+.vscode
+.idea
+coverage*

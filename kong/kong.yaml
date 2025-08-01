@@ -1,0 +1,18 @@
+_format_version: "3.0"
+
+services:
+  - name: backend
+    host: backend
+    port: 8000
+    protocol: http
+    routes:
+      - name: api-route
+        paths: ["/api", "/.well-known"]
+        
+  - name: frontend
+    host: frontend  
+    port: 3000
+    protocol: http
+    routes:
+      - name: frontend-route
+        paths: ["/"]

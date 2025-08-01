@@ -45,8 +45,8 @@ npm install
 
 Create a `.env.local` file in the client directory:
 
-```
-NEXT_PUBLIC_API_URL=http://localhost:8000/api/v1
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8090
 ```
 
 ## Development

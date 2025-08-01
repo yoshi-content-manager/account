@@ -1,0 +1,19 @@
+_format_version: "3.0"
+
+services:
+  - name: backend
+    host: host.docker.internal
+    port: 4002
+    protocol: http
+    routes:
+      - name: api-route
+        paths: ["/api", "/.well-known"]
+        strip_path: false
+        
+  - name: frontend
+    host: host.docker.internal  
+    port: 4001
+    protocol: http
+    routes:
+      - name: frontend-route
+        paths: ["/"]

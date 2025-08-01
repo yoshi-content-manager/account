@@ -1,0 +1,12 @@
+FROM oven/bun:latest
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y python3
+
+COPY ./package*.json ./
+RUN bun install --production
+
+COPY . .
+
+CMD ["bun", "start"]

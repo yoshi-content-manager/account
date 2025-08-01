@@ -25,7 +25,6 @@ import {
   FormLabel,
   FormMessage,
 } from '~/components/ui/form'
-import { Checkbox } from '~/components/ui/checkbox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
 import { Separator } from '~/components/ui/separator'
 import { authClient } from '~/lib/auth'
@@ -326,7 +325,7 @@ function LoginForm() {
                     >
                       <div className='bg-indigo-50 p-3 rounded-md mb-4 text-sm text-indigo-700 border border-indigo-100'>
                         <p>
-                          We'll send you a magic link to your email. Click the
+                          We&apos;ll send you a magic link to your email. Click the
                           link to login without a password.
                         </p>
                       </div>
@@ -382,13 +381,13 @@ function LoginForm() {
                         Magic link sent!
                       </h3>
                       <p className='text-sm'>
-                        We've sent a magic link to your email. Check your inbox
+                        We&apos;ve sent a magic link to your email. Check your inbox
                         and click the link to login instantly.
                       </p>
                     </div>
                     <div className='text-sm text-gray-500'>
                       <p>
-                        Didn't receive the email? Check your spam folder or try
+                        Didn&apos;t receive the email? Check your spam folder or try
                         again in a few minutes.
                       </p>
                     </div>

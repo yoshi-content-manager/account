@@ -1,0 +1,48 @@
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Containerfile
+    environment:
+      - PORT=8000
+      - APP_URL=http://localhost:8090
+      - BETTER_AUTH_URL=http://localhost:8090/api/auth
+      - BETTER_AUTH_SECRET=your_secret_key
+      - BETTER_AUTH_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/better_auth
+      - BETTER_AUTH_JWT_ISSUER=http://auth.project.com
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Containerfile
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:8090
+        - NEXT_PUBLIC_API_VERSION=api/v1
+    networks:
+      - app-network
+
+  kong:
+    image: kong/kong-gateway:3.3.1.0
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /kong/declarative/kong.yaml
+      KONG_PROXY_ACCESS_LOG: /dev/stdout
+      KONG_ADMIN_ACCESS_LOG: /dev/stdout
+      KONG_PROXY_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_ERROR_LOG: /dev/stderr
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+    ports:
+      - "8090:8000"
+      - "8091:8001"
+    volumes:
+      - ./kong/kong.yaml:/kong/declarative/kong.yaml:ro
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

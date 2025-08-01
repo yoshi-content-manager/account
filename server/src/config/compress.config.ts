@@ -1,6 +1,9 @@
 import { createGzip, createDeflate, createBrotliCompress } from 'node:zlib'
 
-function createCompressionStream(format: string) {
+function createCompressionStream(format: string): {
+  readable: ReadableStream
+  writable: WritableStream
+} {
   let handler
   if (format === 'gzip') {
     handler = createGzip()
@@ -17,7 +20,7 @@ function createCompressionStream(format: string) {
       handler.on('data', (chunk) => controller.enqueue(chunk))
       handler.on('end', () => controller.close())
       handler.on('error', (err) => controller.error(err))
-    },
+    }
   })
 
   const writableStream = new WritableStream({
@@ -26,7 +29,7 @@ function createCompressionStream(format: string) {
     },
     close() {
       handler.end()
-    },
+    }
   })
 
   return { readable: readableStream, writable: writableStream }

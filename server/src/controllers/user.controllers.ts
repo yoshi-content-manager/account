@@ -1,13 +1,12 @@
 import { Context } from 'hono'
-import { ObjectId } from 'mongodb'
 
 /**
  * @api {get} /users Get All Users
  * @apiGroup Users
  * @access Private
  */
-export const getUsers = async (c: Context) => {
-  const users = await mongoDb.collection('users').find().toArray()
+export const getUsers = async (c: Context): Promise<Response> => {
+  const users = []
   return c.json(users)
 }
 
@@ -16,19 +15,18 @@ export const getUsers = async (c: Context) => {
  * @apiGroup Users
  * @access Private
  */
-export const getUserById = async (c: Context) => {
+export const getUserById = async (c: Context): Promise<Response> => {
   const id = c.req.param('id')
+  console.log(id)
 
-  const user = await mongoDb
-    .collection('users')
-    .findOne({ _id: new ObjectId(id) })
+  const user = null
 
   if (!user) {
     return c.json(
       {
         success: false,
         message: 'User not found',
-        error: 'No user found with the provided ID',
+        error: 'No user found with the provided ID'
       },
       404
     )
@@ -42,12 +40,12 @@ export const getUserById = async (c: Context) => {
  * @apiGroup Users
  * @access Private
  */
-export const editProfile = async (c: Context) => {
-  const user = c.get('user')
+export const editProfile = async (c: Context): Promise<Response> => {
+  // const user = c.get('user')
   const body = await c.req.json()
 
   // Create an update object with only the fields that were provided
-  const updateFields: Record<string, any> = {}
+  const updateFields: Record<string, string> = {}
 
   // Only add fields to the update if they exist in the request body
   if (body.name !== '') updateFields.name = body.name
@@ -59,25 +57,19 @@ export const editProfile = async (c: Context) => {
     return c.json(
       {
         success: false,
-        message: 'No fields to update',
+        message: 'No fields to update'
       },
       400
     )
   }
 
   // Update the user's profile with only the provided fields
-  const updatedProfile = await mongoDb.collection('users').updateOne(
-    { _id: new ObjectId(user.id) },
-    {
-      $set: updateFields,
-      $currentDate: { lastModified: true },
-    }
-  )
+  const updatedProfile = null
 
   return c.json({
     success: true,
     message: 'Profile updated successfully',
-    data: updatedProfile,
+    data: updatedProfile
   })
 }
 
@@ -86,19 +78,18 @@ export const editProfile = async (c: Context) => {
  * @apiGroup Users
  * @access Private
  */
-export const getProfile = async (c: Context) => {
+export const getProfile = async (c: Context): Promise<Response> => {
   const user = c.get('user')
+  console.log(user)
 
-  const profile = await mongoDb
-    .collection('users')
-    .findOne({ _id: new ObjectId(user.id) })
+  const profile = null
 
   if (!profile) {
     return c.json(
       {
         success: false,
         message: 'Profile not found',
-        error: 'No profile found for the user',
+        error: 'No profile found for the user'
       },
       404
     )

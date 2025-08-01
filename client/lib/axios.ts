@@ -4,7 +4,7 @@ import { authClient } from '~/lib/auth' // Better Auth client instance
 import { redirect } from 'next/navigation'
 
 const Axios = axios.create({
-  baseURL: API_VERSION + API_URL,
+  baseURL: `${API_URL}/${API_VERSION}`,
   headers: {
     Accept: 'application/json',
   },
