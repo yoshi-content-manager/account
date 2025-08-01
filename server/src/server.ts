@@ -82,11 +82,12 @@ app.get('/.well-known/openid-configuration', (c) => {
     authorization_endpoint: `${baseUrl}/api/auth/oauth2/authorize`,
     token_endpoint: `${baseUrl}/api/auth/oauth2/token`,
     userinfo_endpoint: `${baseUrl}/api/auth/oauth2/userinfo`,
-    jwks_uri: `${baseUrl}/api/auth/.well-known/jwks.json`,
+    jwks_uri: `${baseUrl}/api/auth/jwks`,
     scopes_supported: ['openid', 'profile', 'email'],
     response_types_supported: ['code'],
     grant_types_supported: ['authorization_code'],
-    subject_types_supported: ['public']
+    subject_types_supported: ['public'],
+    id_token_signing_alg_values_supported: ['RS256']
   })
 })
 

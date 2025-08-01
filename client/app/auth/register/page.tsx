@@ -87,8 +87,6 @@ function RegisterForm() {
         name: data.name,
         email: data.email,
         password: data.password,
-        phone: '',
-        isAdmin: false,
       },
       {
         onSuccess: () => {
@@ -189,7 +187,7 @@ function RegisterForm() {
         </CardHeader>
         <CardContent>
           <div className='grid gap-6'>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-2 gap-4 hidden'>
               <Button
                 variant='outline'
                 type='button'
@@ -237,7 +235,7 @@ function RegisterForm() {
                 Google
               </Button>
             </div>
-            <div className='relative'>
+            <div className='relative hidden'>
               <div className='absolute inset-0 flex items-center'>
                 <Separator className='w-full' />
               </div>
@@ -248,10 +246,10 @@ function RegisterForm() {
               </div>
             </div>
 
-            <Tabs defaultValue='magic-link' className='w-full'>
-              <TabsList className='grid w-full grid-cols-2'>
+            <Tabs defaultValue='password' className='w-full'>
+              <TabsList className='grid w-full grid-cols-2 hidden'>
                 <TabsTrigger value='password'>Password</TabsTrigger>
-                <TabsTrigger value='magic-link'>Magic Link</TabsTrigger>
+                <TabsTrigger value='magic-link' disabled>Magic Link</TabsTrigger>
               </TabsList>
               <TabsContent value='password' className='mt-4'>
                 <Form {...form}>

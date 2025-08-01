@@ -28,6 +28,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '~/components/ui/tabs'
 import { Separator } from '~/components/ui/separator'
 import { authClient } from '~/lib/auth'
+import { API_URL } from '../../../lib/constants'
 
 type FormValues = {
   email: string
@@ -47,6 +48,9 @@ function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard'
+
+  // Check if this is an OIDC authorization request
+  const isOIDCFlow = searchParams.get('client_id') !== null;
 
   // Password login form
   const form = useForm<FormValues>({
@@ -70,10 +74,28 @@ function LoginForm() {
     // Sign in with email and password
     await authClient.signIn.email(data, {
       onSuccess: () => {
-        router.push(callbackUrl)
         toast.success('Welcome back!', {
           description: 'You have successfully logged in.',
         })
+        if (isOIDCFlow) {
+          // For OIDC flow, redirect to continue the authorization process
+          // Preserve all original OIDC parameters
+          const currentUrl = new URL(window.location.href);
+          const authorizationUrl = new URL('/api/auth/oauth2/authorize', API_URL);
+          
+          // Copy all OIDC parameters from current URL to authorization URL
+          ['response_type', 'redirect_uri', 'client_id', 'nonce', 'state', 'scope', 'code_challenge', 'code_challenge_method'].forEach(param => {
+            const value = currentUrl.searchParams.get(param);
+            if (value) {
+              authorizationUrl.searchParams.set(param, value);
+            }
+          });
+  
+          // Redirect to continue OIDC flow
+          window.location.href = authorizationUrl.toString();
+          return;
+        }
+        router.push(callbackUrl)
       },
       onError: ({ error }) => {
         toast.error('Login failed', {
@@ -169,7 +191,7 @@ function LoginForm() {
         </CardHeader>
         <CardContent>
           <div className='grid gap-6'>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-2 gap-4 hidden'>
               <Button
                 variant='outline'
                 type='button'
@@ -217,7 +239,7 @@ function LoginForm() {
                 Google
               </Button>
             </div>
-            <div className='relative'>
+            <div className='relative hidden'>
               <div className='absolute inset-0 flex items-center'>
                 <Separator className='w-full' />
               </div>
@@ -228,8 +250,8 @@ function LoginForm() {
               </div>
             </div>
 
-            <Tabs defaultValue='magic-link' className='w-full'>
-              <TabsList className='grid w-full grid-cols-2'>
+            <Tabs defaultValue='password' className='w-full'>
+              <TabsList className='grid w-full grid-cols-2 hidden'>
                 <TabsTrigger value='password'>Password</TabsTrigger>
                 <TabsTrigger value='magic-link'>Magic Link</TabsTrigger>
               </TabsList>

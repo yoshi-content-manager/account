@@ -19,7 +19,7 @@ export const auth = betterAuth({
     appName: "Yoshi Account",
     database: new Pool({ connectionString: databaseUrl }),
     baseURL: BETTER_AUTH_URL,
-    trustedOrigins: [APP_URL],
+    trustedOrigins: [APP_URL, ...(process.env.EXTRA_CORS_ORIGINS || '').split(',')],
     secret: process.env.BETTER_AUTH_SECRET,
     advanced: {
         database: {
@@ -120,7 +120,9 @@ export const auth = betterAuth({
             loginPage: "/auth/login",
             consentPage: "/auth/consent",
             allowDynamicClientRegistration: false,
-            requirePKCE: true,
+            useJWTPlugin: true,
+            requirePKCE: false,
+            ...(JSON.parse(process.env.BETTER_AUTH_OIDC_TRUSTED_PROVIDERS || "{}")),
         }),
         jwt({
             jwt: {

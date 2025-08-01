@@ -97,7 +97,7 @@ export default function Home() {
               </>
             ) : (
               <>
-                <div className='grid grid-cols-2 gap-4'>
+                <div className='grid grid-cols-2 gap-4 hidden'>
                   <Button
                     variant='outline'
                     className='border-indigo-200'
@@ -144,7 +144,7 @@ export default function Home() {
                     Google
                   </Button>
                 </div>
-                <div className='relative'>
+                <div className='relative hidden'>
                   <div className='absolute inset-0 flex items-center'>
                     <Separator className='w-full' />
                   </div>
