@@ -44,12 +44,8 @@ app.use(
   '*',
   cors({
     origin: [
-      'http://localhost:3000',
-      'http://localhost:8000',
-      'http://localhost:8001',
-      'http://localhost:8002',
-      'http://localhost:8090',
-      baseUrl
+      baseUrl,
+      ...(process.env.EXTRA_CORS_ORIGINS || '').split(',')
     ], // Specify allowed origins (update for production)
     credentials: true,
     maxAge: 86400 // Cache preflight for 1 day
