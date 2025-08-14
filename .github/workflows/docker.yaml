@@ -6,9 +6,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  setup-docker-buildx:
+  build-and-push-docker-images:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        include:
+          - component: client
+            context: client
+            dockerfile: Containerfile
+          - component: server
+            context: server
+            dockerfile: Containerfile
+    
     permissions:
       contents: read
       packages: write
@@ -27,23 +36,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-  build-and-push-docker-images:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - component: client
-            context: client
-            dockerfile: Containerfile
-          - component: server
-            context: server
-            dockerfile: Containerfile
-    
-    permissions:
-      contents: read
-      packages: write
-
-    steps:
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
