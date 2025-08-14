@@ -1,4 +1,4 @@
-name: '[BETTER-AUTH] Build and Publish Docker images to GHCR'
+name: 'Build and Publish Docker images to GHCR'
 
 on:
   push:
@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - component: client
-            context: client
-            dockerfile: Containerfile
-          - component: server
-            context: server
-            dockerfile: Containerfile
+        # Dimension 1: which component to build
+        component: 
+          - client
+          - server
+        # Dimension 2: which architectures
+        arch:
+          - amd64
+          - arm64
     
     permissions:
       contents: read
@@ -36,7 +37,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels) for Docker
+      - name: Extract metadata (tags, labels)
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -48,10 +49,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v6
         with:
-          context: ${{ matrix.context }}
-          file: ${{ matrix.context }}/${{ matrix.dockerfile }}
+          context: ${{ matrix.component }}
+          file: ${{ matrix.component }}/Containerfile
+          platforms: linux/${{ matrix.arch }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: |
+            ${{ steps.meta.outputs.tags }}-${{ matrix.arch }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
