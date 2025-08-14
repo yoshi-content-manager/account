@@ -130,7 +130,7 @@ export const auth = betterAuth({
             allowDynamicClientRegistration: false,
             useJWTPlugin: true,
             requirePKCE: false,
-            getAdditionalUserInfoClaim: async ({ user }) => {
+            getAdditionalUserInfoClaim: async (user) => {
                 return {
                     federated_email: `${user.id}@${process.env.FEDERATED_EMAIL_DOMAIN}`,
                 };

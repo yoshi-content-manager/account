@@ -12,7 +12,7 @@ jobs:
       matrix:
         # Dimension 1: which component to build
         component: 
-          - client
+          # - client
           - server
         # Dimension 2: which architectures
         arch:
