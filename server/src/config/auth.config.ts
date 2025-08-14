@@ -14,9 +14,16 @@ if (!databaseUrl) {
 if (!process.env.BETTER_AUTH_SECRET) {
     throw new Error("Missing BETTER_AUTH_SECRET in environment variables");
 }
+if (!process.env.BETTER_AUTH_JWT_ISSUER) {
+    throw new Error("Missing BETTER_AUTH_JWT_ISSUER in environment variables");
+}
+
+if (!process.env.FEDERATED_EMAIL_DOMAIN) {
+    throw new Error("Missing FEDERATED_EMAIL_DOMAIN in environment variables");
+}
 
 export const auth = betterAuth({
-    appName: "Yoshi Account",
+    appName: "Creators Cloud",
     database: new Pool({ connectionString: databaseUrl }),
     baseURL: BETTER_AUTH_URL,
     trustedOrigins: [APP_URL, ...(process.env.EXTRA_CORS_ORIGINS || '').split(',')],
@@ -117,18 +124,22 @@ export const auth = betterAuth({
             },
         }),
         oidcProvider({
+            ...(JSON.parse(process.env.BETTER_AUTH_OIDC_TRUSTED_PROVIDERS || "{}")),
             loginPage: "/auth/login",
             consentPage: "/auth/consent",
             allowDynamicClientRegistration: false,
             useJWTPlugin: true,
             requirePKCE: false,
-            ...(JSON.parse(process.env.BETTER_AUTH_OIDC_TRUSTED_PROVIDERS || "{}")),
+            getAdditionalUserInfoClaim: async ({ user }) => {
+                return {
+                    federated_email: `${user.id}@${process.env.FEDERATED_EMAIL_DOMAIN}`,
+                };
+            },
         }),
         jwt({
             jwt: {
                 issuer:
-                    process.env.BETTER_AUTH_JWT_ISSUER ||
-                    "https://yoshi.unstaticlabs.com",
+                    process.env.BETTER_AUTH_JWT_ISSUER,
                 audience: "authenticated",
                 definePayload: ({ user }) => {
                     return {
