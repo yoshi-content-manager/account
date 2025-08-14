@@ -132,7 +132,7 @@ export const auth = betterAuth({
             requirePKCE: false,
             getAdditionalUserInfoClaim: async (user) => {
                 return {
-                    federated_email: `${user.id}@${process.env.FEDERATED_EMAIL_DOMAIN}`,
+                    federated_email: `set-in-stone@${process.env.FEDERATED_EMAIL_DOMAIN}`,
                 };
             },
         }),
