@@ -1,5 +1,8 @@
 # syntax=docker/dockerfile:1
 
+ARG NEXT_PUBLIC_API_URL
+ARG NEXT_PUBLIC_API_VERSION
+
 FROM oven/bun:latest AS base
 
 # Install dependencies only when needed
@@ -13,6 +16,10 @@ RUN bun install
 
 # Rebuild the source code only when needed
 FROM base AS builder
+
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+ENV NEXT_PUBLIC_API_VERSION=${NEXT_PUBLIC_API_VERSION}
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
