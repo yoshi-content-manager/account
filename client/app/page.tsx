@@ -175,7 +175,7 @@ export default function Home() {
         </CardContent>
         <CardFooter className='flex justify-center border-t border-indigo-100 pt-4'>
           <p className='text-xs text-muted-foreground'>
-            &copy; {new Date().getFullYear()} Better Auth Demo
+            &copy; {new Date().getFullYear()} Creators Cloud
           </p>
         </CardFooter>
       </Card>

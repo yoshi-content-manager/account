@@ -14,8 +14,13 @@ export function middleware(request: NextRequest) {
     path.startsWith('/auth/reset-password/') ||
     path === '/'
 
+  const cookieName =
+    process.env.NODE_ENV === 'production'
+      ? '__Secure-better-auth.session_token'
+      : 'better-auth.session_token'
+
   // Get authentication status from cookies - better-auth uses '__session' cookie
-  const hasSession = request.cookies.has('better-auth.session_token')
+  const hasSession = request.cookies.has(cookieName)
 
   // Redirect authenticated users away from auth pages
   if (isPublicPath && hasSession) {

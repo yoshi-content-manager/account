@@ -299,6 +299,7 @@ function RegisterForm() {
                             <Input
                               type='email'
                               placeholder='name@example.com'
+                              autoComplete='email'
                               {...field}
                               className='border-indigo-200 focus-visible:ring-indigo-500'
                             />
@@ -330,6 +331,7 @@ function RegisterForm() {
                           <FormControl>
                             <Input
                               type='password'
+                              autoComplete='new-password'
                               {...field}
                               className='border-indigo-200 focus-visible:ring-indigo-500'
                             />
@@ -351,6 +353,7 @@ function RegisterForm() {
                           <FormControl>
                             <Input
                               type='password'
+                              autoComplete='new-password'
                               {...field}
                               className='border-indigo-200 focus-visible:ring-indigo-500'
                             />
@@ -438,6 +441,7 @@ function RegisterForm() {
                               <Input
                                 type='email'
                                 placeholder='name@example.com'
+                                autoComplete='email'
                                 {...field}
                                 className='border-indigo-200 focus-visible:ring-indigo-500'
                               />

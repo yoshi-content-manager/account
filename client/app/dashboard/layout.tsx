@@ -65,7 +65,7 @@ export default function DashboardLayout({
           <div className='flex items-center space-x-2'>
             <Link href='/' className='flex items-center space-x-2'>
               <Flower className='h-6 w-6 text-indigo-500' />
-              <span className='font-bold text-indigo-700'>Better Auth</span>
+              <span className='font-bold text-indigo-700'>Creators Cloud</span>
             </Link>
           </div>
           <nav className='hidden md:flex items-center space-x-6'>
@@ -130,7 +130,7 @@ export default function DashboardLayout({
 
       <footer className='border-t border-indigo-100 bg-white py-4'>
         <div className='container mx-auto px-4 text-center text-sm text-gray-500'>
-          &copy; {new Date().getFullYear()} Better Auth Demo. All rights
+          &copy; {new Date().getFullYear()} Creators Cloud. All rights
           reserved.
         </div>
       </footer>

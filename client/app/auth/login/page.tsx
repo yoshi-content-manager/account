@@ -311,6 +311,7 @@ function LoginForm() {
                           <FormControl>
                             <Input
                               type='password'
+                              autoComplete='current-password'
                               {...field}
                               className='border-indigo-200 focus-visible:ring-indigo-500'
                             />
@@ -368,6 +369,7 @@ function LoginForm() {
                               <Input
                                 type='email'
                                 placeholder='name@example.com'
+                                autoComplete='email'
                                 {...field}
                                 className='border-indigo-200 focus-visible:ring-indigo-500'
                               />
