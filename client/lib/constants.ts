@@ -1,5 +1,4 @@
-import { unstable_noStore as noStore } from 'next/cache';
-noStore();
+import { env } from 'next-runtime-env';
 
-export const API_VERSION = process.env.NEXT_PUBLIC_API_VERSION || 'api/v1'
-export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000'
+export const API_VERSION = env('NEXT_PUBLIC_API_VERSION') ?? 'api/v1'
+export const API_URL = env('NEXT_PUBLIC_API_URL') ?? 'http://localhost:3000'
