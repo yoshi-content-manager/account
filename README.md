@@ -3,8 +3,10 @@
 A complete full-stack application with a high-performance API backend using [Bun](https://bun.sh), [Hono](https://hono.dev), and Better Auth, paired with a modern [Next.js](https://nextjs.org) frontend with [Shadcn UI](https://ui.shadcn.com/).
 
 ```bash
-docker build  -t yoshi-account-server -f server/Containerfile ./server
-docker build  -t yoshi-account-client -f client/Containerfile ./client
+docker build  -t creators-account-server -f server/Containerfile ./server
+docker build  -t creators-account-client -f client/Containerfile ./client
+
+docker compose -f compose.yaml -f compose.dev.yaml up -d
 ```
 
 ## Project Overview
@@ -124,8 +126,8 @@ cd client
 bun dev
 ```
 
-- The API will be available at: http://localhost:8000/api/v1
-- The frontend will be available at: http://localhost:3000
+- The API will be available at: <http://localhost:8000/api/v1>
+- The frontend will be available at: <http://localhost:3000>
 
 ### Production Mode
 

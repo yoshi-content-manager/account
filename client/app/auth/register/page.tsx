@@ -96,6 +96,7 @@ function RegisterForm() {
           router.push('/dashboard')
         },
         onError: ({ error }) => {
+          console.error(error)
           toast.error('Registration failed', {
             description:
               error.message || 'There was a problem creating your account',
@@ -118,6 +119,7 @@ function RegisterForm() {
             })
           },
           onError: ({ error }) => {
+            console.error(error)
             toast.error('Failed to send magic link', {
               description:
                 error.message || 'There was a problem sending the magic link',
@@ -143,6 +145,7 @@ function RegisterForm() {
       },
       {
         onError: ({ error }) => {
+          console.error(error)
           toast.error('GitHub login failed', {
             description: 'Could not authenticate with GitHub.',
           })
@@ -163,6 +166,7 @@ function RegisterForm() {
       },
       {
         onError: ({ error }) => {
+          console.error(error)
           toast.error('Google login failed', {
             description: 'Could not authenticate with Google.',
           })

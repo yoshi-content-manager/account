@@ -44,6 +44,7 @@ function LoginForm() {
   const [isGithubLoading, setIsGithubLoading] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
   const [isMagicLinkSent, setIsMagicLinkSent] = useState(false)
+  const [isFormBlurred, setIsFormBlurred] = useState(false)
 
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -71,6 +72,9 @@ function LoginForm() {
   const { isSubmitting: isMagicLinkSubmitting } = magicLinkForm.formState
 
   const onSubmit = async (data: FormValues) => {
+    // Blur the form and show spinner
+    setIsFormBlurred(true)
+    
     // Sign in with email and password
     await authClient.signIn.email(data, {
       onSuccess: () => {
@@ -91,13 +95,17 @@ function LoginForm() {
             }
           });
   
-          // Redirect to continue OIDC flow
+          // Keep form blurred since we're redirecting elsewhere
           window.location.href = authorizationUrl.toString();
           return;
         }
+        // Unblur form for normal redirect
+        setIsFormBlurred(false)
         router.push(callbackUrl)
       },
       onError: ({ error }) => {
+        console.error(error)
+        setIsFormBlurred(false)
         toast.error('Login failed', {
           description: 'Invalid email or password. Please try again.',
         })
@@ -128,6 +136,7 @@ function LoginForm() {
         }
       )
     } catch (error) {
+      console.error(error)
       toast.error('Failed to send magic link', {
         description:
           'There was a problem sending the magic link. Please try again.',
@@ -145,6 +154,7 @@ function LoginForm() {
       },
       {
         onError: ({ error }) => {
+          console.error(error)
           toast.error('GitHub login failed', {
             description: 'Could not authenticate with GitHub.',
           })
@@ -165,6 +175,7 @@ function LoginForm() {
       },
       {
         onError: ({ error }) => {
+          console.error(error)
           toast.error('Google login failed', {
             description: 'Could not authenticate with Google.',
           })
@@ -177,7 +188,15 @@ function LoginForm() {
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-      <Card className='w-full max-w-md border-indigo-200'>
+      <Card className={`w-full max-w-md border-indigo-200 relative ${isFormBlurred ? 'blur-sm' : ''}`}>
+        {isFormBlurred && (
+          <div className='absolute inset-0 flex items-center justify-center bg-white/50 z-10 rounded-lg'>
+            <div className='text-center'>
+              <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
+              <p className='mt-2 text-indigo-700 text-sm'>Logging in...</p>
+            </div>
+          </div>
+        )}
         <CardHeader className='text-center'>
           <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
             <Flower className='h-6 w-6 text-indigo-500' />

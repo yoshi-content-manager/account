@@ -10,6 +10,7 @@ services:
       - BETTER_AUTH_SECRET=your_secret_key
       - BETTER_AUTH_DATABASE_URL=postgresql://postgres:postgres@localhost:5432/better_auth
       - BETTER_AUTH_JWT_ISSUER=http://auth.project.com
+      - FEDERATED_EMAIL_DOMAIN=drive.project.com
     networks:
       - app-network
 
