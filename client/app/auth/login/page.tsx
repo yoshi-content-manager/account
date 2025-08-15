@@ -189,14 +189,6 @@ function LoginForm() {
   return (
     <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
       <Card className={`w-full max-w-md border-indigo-200 relative ${isFormBlurred ? 'blur-sm' : ''}`}>
-        {isFormBlurred && (
-          <div className='absolute inset-0 flex items-center justify-center bg-white/50 z-10 rounded-lg'>
-            <div className='text-center'>
-              <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
-              <p className='mt-2 text-indigo-700 text-sm'>Logging in...</p>
-            </div>
-          </div>
-        )}
         <CardHeader className='text-center'>
           <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
             <Flower className='h-6 w-6 text-indigo-500' />
@@ -467,6 +459,14 @@ function LoginForm() {
           </Link>
         </CardFooter>
       </Card>
+      {isFormBlurred && (
+        <div className='absolute inset-0 flex items-center justify-center bg-white/50 z-10 rounded-lg'>
+          <div className='text-center'>
+            <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
+            <p className='mt-2 text-indigo-700 text-sm'>Logging in...</p>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
