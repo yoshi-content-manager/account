@@ -128,6 +128,7 @@ function RegisterForm() {
         }
       )
     } catch (error) {
+      console.error(error)
       toast.error('Failed to send magic link', {
         description:
           'There was a problem sending the magic link. Please try again.',

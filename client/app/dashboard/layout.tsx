@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { toast } from 'sonner'
-import { usePathname, useRouter } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Flower, LogOut, User, Home, Shield, Users } from 'lucide-react'
 //
 import { Button } from '~/components/ui/button'
@@ -15,7 +15,6 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode
 }) {
-  const router = useRouter()
   const pathname = usePathname()
   const [isAdmin, setIsAdmin] = useState(false)
 

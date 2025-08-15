@@ -58,7 +58,7 @@ export default function EditProfile() {
     }
   }
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async () => {
     try {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1500))
@@ -69,6 +69,7 @@ export default function EditProfile() {
 
       router.push('/dashboard/profile')
     } catch (error) {
+      console.error(error)
       toast.error('Update failed', {
         description:
           'There was a problem updating your profile. Please try again.',
