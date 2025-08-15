@@ -17,16 +17,20 @@ if (!process.env.BETTER_AUTH_SECRET) {
 if (!process.env.BETTER_AUTH_JWT_ISSUER) {
     throw new Error("Missing BETTER_AUTH_JWT_ISSUER in environment variables");
 }
-
 if (!process.env.FEDERATED_EMAIL_DOMAIN) {
     throw new Error("Missing FEDERATED_EMAIL_DOMAIN in environment variables");
+}
+
+const trustedOrigins = [APP_URL]
+if (process.env.EXTRA_CORS_ORIGINS) {
+    trustedOrigins.push(...process.env.EXTRA_CORS_ORIGINS.split(','))
 }
 
 export const auth = betterAuth({
     appName: "Creators Cloud",
     database: new Pool({ connectionString: databaseUrl }),
     baseURL: BETTER_AUTH_URL,
-    trustedOrigins: [APP_URL, ...(process.env.EXTRA_CORS_ORIGINS || '').split(',')],
+    trustedOrigins,
     secret: process.env.BETTER_AUTH_SECRET,
     advanced: {
         database: {
