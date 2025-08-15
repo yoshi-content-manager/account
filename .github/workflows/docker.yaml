@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-and-push-docker-images:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
         # Dimension 1: which component to build
@@ -16,7 +16,7 @@ jobs:
           - server
         # Dimension 2: which architectures
         arch:
-          - amd64
+          # - amd64
           - arm64
     
     permissions:
