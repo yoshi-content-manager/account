@@ -47,7 +47,7 @@ export default function Profile() {
             <Button
               variant='outline'
               size='sm'
-              className='flex items-center border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+              className='flex items-center border-orange-200 text-orange-700 hover:bg-orange-50'
             >
               <Edit className='mr-2 h-4 w-4' />
               Edit Profile
@@ -57,7 +57,7 @@ export default function Profile() {
             <Button
               variant='outline'
               size='sm'
-              className='flex items-center border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+              className='flex items-center border-orange-200 text-orange-700 hover:bg-orange-50'
             >
               <Shield className='mr-2 h-4 w-4' />
               Security
@@ -68,7 +68,7 @@ export default function Profile() {
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
         <div className='md:col-span-1'>
-          <Card className='border-indigo-200'>
+          <Card className='border-orange-200'>
             <CardContent className='pt-6'>
               <div className='flex flex-col items-center'>
                 <Avatar className='h-24 w-24 mb-4'>
@@ -76,7 +76,7 @@ export default function Profile() {
                     src='/placeholder.svg?height=96&width=96'
                     alt={user.name}
                   />
-                  <AvatarFallback className='bg-indigo-100 text-indigo-700 text-xl'>
+                  <AvatarFallback className='bg-orange-100 text-orange-700 text-xl'>
                     {user.name
                       .split(' ')
                       .map((n) => n[0])
@@ -94,14 +94,14 @@ export default function Profile() {
 
               <div className='mt-6 space-y-3'>
                 <div className='flex items-start'>
-                  <Mail className='h-5 w-5 text-indigo-500 mr-3 mt-0.5' />
+                  <Mail className='h-5 w-5 text-orange-500 mr-3 mt-0.5' />
                   <div>
                     <p className='text-sm font-medium text-gray-700'>Email</p>
                     <p className='text-sm text-gray-600'>{user.email}</p>
                   </div>
                 </div>
                 <div className='flex items-start'>
-                  <Calendar className='h-5 w-5 text-indigo-500 mr-3 mt-0.5' />
+                  <Calendar className='h-5 w-5 text-orange-500 mr-3 mt-0.5' />
                   <div>
                     <p className='text-sm font-medium text-gray-700'>
                       Member Since
@@ -110,7 +110,7 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className='flex items-start'>
-                  <Briefcase className='h-5 w-5 text-indigo-500 mr-3 mt-0.5' />
+                  <Briefcase className='h-5 w-5 text-orange-500 mr-3 mt-0.5' />
                   <div>
                     <p className='text-sm font-medium text-gray-700'>
                       Occupation
@@ -125,15 +125,15 @@ export default function Profile() {
 
         <div className='md:col-span-2'>
           <Tabs defaultValue='about' className='w-full'>
-            <TabsList className='grid w-full grid-cols-3 bg-indigo-50'>
+            <TabsList className='grid w-full grid-cols-3 bg-orange-50'>
               <TabsTrigger value='about'>About</TabsTrigger>
               <TabsTrigger value='skills'>Skills</TabsTrigger>
               <TabsTrigger value='social'>Social</TabsTrigger>
             </TabsList>
             <TabsContent value='about'>
-              <Card className='border-indigo-200'>
+              <Card className='border-orange-200'>
                 <CardHeader>
-                  <CardTitle className='text-indigo-700'>About Me</CardTitle>
+                  <CardTitle className='text-orange-700'>About Me</CardTitle>
                   <CardDescription>
                     Personal information and bio
                   </CardDescription>
@@ -146,9 +146,9 @@ export default function Profile() {
               </Card>
             </TabsContent>
             <TabsContent value='skills'>
-              <Card className='border-indigo-200'>
+              <Card className='border-orange-200'>
                 <CardHeader>
-                  <CardTitle className='text-indigo-700'>Skills</CardTitle>
+                  <CardTitle className='text-orange-700'>Skills</CardTitle>
                   <CardDescription>
                     Technical skills and expertise
                   </CardDescription>
@@ -158,7 +158,7 @@ export default function Profile() {
                     {user.skills.map((skill, index) => (
                       <span
                         key={index}
-                        className='px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm'
+                        className='px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm'
                       >
                         {skill}
                       </span>
@@ -168,9 +168,9 @@ export default function Profile() {
               </Card>
             </TabsContent>
             <TabsContent value='social'>
-              <Card className='border-indigo-200'>
+              <Card className='border-orange-200'>
                 <CardHeader>
-                  <CardTitle className='text-indigo-700'>
+                  <CardTitle className='text-orange-700'>
                     Social Links
                   </CardTitle>
                   <CardDescription>
@@ -182,8 +182,8 @@ export default function Profile() {
                     {Object.entries(user.socialLinks).map(
                       ([platform, link]) => (
                         <div key={platform} className='flex items-center'>
-                          <div className='w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-3'>
-                            <span className='text-indigo-700 font-medium uppercase'>
+                          <div className='w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-3'>
+                            <span className='text-orange-700 font-medium uppercase'>
                               {platform[0]}
                             </span>
                           </div>
@@ -195,7 +195,7 @@ export default function Profile() {
                               href={`https://${link}`}
                               target='_blank'
                               rel='noopener noreferrer'
-                              className='text-sm text-indigo-600 hover:underline'
+                              className='text-sm text-orange-600 hover:underline'
                             >
                               {link}
                             </a>
@@ -209,16 +209,16 @@ export default function Profile() {
             </TabsContent>
           </Tabs>
 
-          <Card className='border-indigo-200 mt-6'>
+          <Card className='border-orange-200 mt-6'>
             <CardHeader>
-              <CardTitle className='text-indigo-700'>Recent Activity</CardTitle>
+              <CardTitle className='text-orange-700'>Recent Activity</CardTitle>
               <CardDescription>Your latest actions and updates</CardDescription>
             </CardHeader>
             <CardContent>
               <div className='space-y-4'>
                 <div className='flex'>
-                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100'>
-                    <User className='h-5 w-5 text-indigo-700' />
+                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange-100'>
+                    <User className='h-5 w-5 text-orange-700' />
                   </div>
                   <div>
                     <p className='text-sm font-medium'>Profile Updated</p>
@@ -229,8 +229,8 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className='flex'>
-                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100'>
-                    <Shield className='h-5 w-5 text-indigo-700' />
+                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange-100'>
+                    <Shield className='h-5 w-5 text-orange-700' />
                   </div>
                   <div>
                     <p className='text-sm font-medium'>Password Changed</p>
@@ -241,8 +241,8 @@ export default function Profile() {
                   </div>
                 </div>
                 <div className='flex'>
-                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-indigo-100'>
-                    <Mail className='h-5 w-5 text-indigo-700' />
+                  <div className='mr-4 flex h-10 w-10 items-center justify-center rounded-full bg-orange-100'>
+                    <Mail className='h-5 w-5 text-orange-700' />
                   </div>
                   <div>
                     <p className='text-sm font-medium'>Email Verified</p>

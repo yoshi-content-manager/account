@@ -3,9 +3,10 @@
 import React, { Suspense, useState } from 'react'
 import Link from 'next/link'
 import { toast } from 'sonner'
+import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ArrowLeft, Flower, Loader2, Github, Wand2 } from 'lucide-react'
+import { ArrowLeft, Loader2, Github, Wand2 } from 'lucide-react'
 //
 import { Button } from '~/components/ui/button'
 import {
@@ -187,13 +188,13 @@ function LoginForm() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-      <Card className={`w-full max-w-md border-indigo-200 relative ${isFormBlurred ? 'blur-sm' : ''}`}>
+    <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+      <Card className={`w-full max-w-md border-orange-200 relative ${isFormBlurred ? 'blur-sm' : ''}`}>
         <CardHeader className='text-center'>
-          <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
-            <Flower className='h-6 w-6 text-indigo-500' />
+          <div className='mx-auto rounded-full flex items-center justify-center'>
+            <Image src='/logo.jpg' alt='Creators Cloud' width={48} height={48} />
           </div>
-          <CardTitle className='text-2xl font-bold text-indigo-700'>
+          <CardTitle className='text-2xl font-bold text-orange-700'>
             Login
           </CardTitle>
           <CardDescription>
@@ -206,7 +207,7 @@ function LoginForm() {
               <Button
                 variant='outline'
                 type='button'
-                className='border-indigo-200'
+                className='border-orange-200'
                 onClick={handleGithubLogin}
                 disabled={isGithubLoading}
               >
@@ -220,7 +221,7 @@ function LoginForm() {
               <Button
                 variant='outline'
                 type='button'
-                className='border-indigo-200'
+                className='border-orange-200'
                 onClick={handleGoogleLogin}
                 disabled={isGoogleLoading}
               >
@@ -290,7 +291,7 @@ function LoginForm() {
                             <Input
                               placeholder='name@example.com'
                               {...field}
-                              className='border-indigo-200 focus-visible:ring-indigo-500'
+                              className='border-orange-200 focus-visible:ring-orange-500'
                             />
                           </FormControl>
                           <FormMessage />
@@ -314,7 +315,7 @@ function LoginForm() {
                             <FormLabel>Password</FormLabel>
                             <Link
                               href='/auth/forgot-password'
-                              className='text-xs text-indigo-600 hover:underline'
+                              className='text-xs text-orange-600 hover:underline'
                             >
                               Forgot password?
                             </Link>
@@ -324,7 +325,7 @@ function LoginForm() {
                               type='password'
                               autoComplete='current-password'
                               {...field}
-                              className='border-indigo-200 focus-visible:ring-indigo-500'
+                              className='border-orange-200 focus-visible:ring-orange-500'
                             />
                           </FormControl>
                           <FormMessage />
@@ -334,7 +335,7 @@ function LoginForm() {
 
                     <Button
                       type='submit'
-                      className='w-full bg-indigo-600 hover:bg-indigo-700'
+                      className='w-full bg-orange-600 hover:bg-orange-700'
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
@@ -357,7 +358,7 @@ function LoginForm() {
                       onSubmit={magicLinkForm.handleSubmit(onMagicLinkSubmit)}
                       className='space-y-4'
                     >
-                      <div className='bg-indigo-50 p-3 rounded-md mb-4 text-sm text-indigo-700 border border-indigo-100'>
+                      <div className='bg-orange-50 p-3 rounded-md mb-4 text-sm text-orange-700 border border-orange-100'>
                         <p>
                           We&apos;ll send you a magic link to your email. Click the
                           link to login without a password.
@@ -382,7 +383,7 @@ function LoginForm() {
                                 placeholder='name@example.com'
                                 autoComplete='email'
                                 {...field}
-                                className='border-indigo-200 focus-visible:ring-indigo-500'
+                                className='border-orange-200 focus-visible:ring-orange-500'
                               />
                             </FormControl>
                             <FormMessage />
@@ -392,7 +393,7 @@ function LoginForm() {
 
                       <Button
                         type='submit'
-                        className='w-full bg-indigo-600 hover:bg-indigo-700'
+                        className='w-full bg-orange-600 hover:bg-orange-700'
                         disabled={isMagicLinkSubmitting}
                       >
                         {isMagicLinkSubmitting ? (
@@ -429,7 +430,7 @@ function LoginForm() {
                     <Button
                       type='button'
                       variant='outline'
-                      className='w-full border-indigo-200'
+                      className='w-full border-orange-200'
                       onClick={() => setIsMagicLinkSent(false)}
                     >
                       Try Again
@@ -445,14 +446,14 @@ function LoginForm() {
             Don&apos;t have an account?{' '}
             <Link
               href='/auth/register'
-              className='text-indigo-600 hover:underline'
+              className='text-orange-600 hover:underline'
             >
               Register
             </Link>
           </div>
           <Link
             href='/'
-            className='text-indigo-600 hover:underline text-sm flex items-center justify-center'
+            className='text-orange-600 hover:underline text-sm flex items-center justify-center'
           >
             <ArrowLeft className='mr-1 h-3 w-3' />
             Back to home
@@ -462,8 +463,8 @@ function LoginForm() {
       {isFormBlurred && (
         <div className='absolute inset-0 flex items-center justify-center bg-white/50 z-10 rounded-lg'>
           <div className='text-center'>
-            <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
-            <p className='mt-2 text-indigo-700 text-sm'>Logging in...</p>
+            <Loader2 className='h-8 w-8 animate-spin mx-auto text-orange-500' />
+            <p className='mt-2 text-orange-700 text-sm'>Logging in...</p>
           </div>
         </div>
       )}
@@ -476,10 +477,10 @@ export default function Login() {
   return (
     <Suspense
       fallback={
-        <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
+        <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
           <div className='text-center'>
-            <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
-            <p className='mt-2 text-indigo-700'>Loading...</p>
+            <Loader2 className='h-8 w-8 animate-spin mx-auto text-orange-500' />
+            <p className='mt-2 text-orange-700'>Loading...</p>
           </div>
         </div>
       }

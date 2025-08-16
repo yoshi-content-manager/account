@@ -134,15 +134,15 @@ export default function ChangePassword() {
       <div className='flex justify-between items-center mb-6'>
         <h1 className='text-2xl font-bold text-gray-800'>Change Password</h1>
         <Link href='/dashboard/profile'>
-          <Button variant='outline' size='sm' className='border-indigo-200'>
+          <Button variant='outline' size='sm' className='border-orange-200'>
             Cancel
           </Button>
         </Link>
       </div>
 
-      <Card className='border-indigo-200 max-w-md mx-auto'>
+      <Card className='border-orange-200 max-w-md mx-auto'>
         <CardHeader>
-          <CardTitle className='text-xl font-bold text-indigo-700 flex items-center'>
+          <CardTitle className='text-xl font-bold text-orange-700 flex items-center'>
             <Lock className='mr-2 h-5 w-5' />
             Security Settings
           </CardTitle>
@@ -166,7 +166,7 @@ export default function ChangePassword() {
                           type={showCurrentPassword ? 'text' : 'password'}
                           placeholder='Enter your current password'
                           {...field}
-                          className='border-indigo-200 focus-visible:ring-indigo-500 pr-10'
+                          className='border-orange-200 focus-visible:ring-orange-500 pr-10'
                         />
                       </FormControl>
                       <Button
@@ -221,7 +221,7 @@ export default function ChangePassword() {
                           placeholder='Enter your new password'
                           {...field}
                           onChange={onPasswordChange}
-                          className='border-indigo-200 focus-visible:ring-indigo-500 pr-10'
+                          className='border-orange-200 focus-visible:ring-orange-500 pr-10'
                         />
                       </FormControl>
                       <Button
@@ -291,7 +291,7 @@ export default function ChangePassword() {
                           type={showConfirmPassword ? 'text' : 'password'}
                           placeholder='Confirm your new password'
                           {...field}
-                          className='border-indigo-200 focus-visible:ring-indigo-500 pr-10'
+                          className='border-orange-200 focus-visible:ring-orange-500 pr-10'
                         />
                       </FormControl>
                       <Button
@@ -325,14 +325,14 @@ export default function ChangePassword() {
                   <Button
                     type='button'
                     variant='outline'
-                    className='border-indigo-200'
+                    className='border-orange-200'
                   >
                     Cancel
                   </Button>
                 </Link>
                 <Button
                   type='submit'
-                  className='bg-indigo-600 hover:bg-indigo-700'
+                  className='bg-orange-600 hover:bg-orange-700'
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (

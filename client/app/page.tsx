@@ -2,6 +2,7 @@
 
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from '~/components/ui/button'
 import {
   Card,
@@ -61,35 +62,34 @@ export default function Home() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-      <Card className='w-full max-w-md border-indigo-200'>
+    <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+      <Card className='w-full max-w-md border-orange-200'>
         <CardHeader className='text-center'>
-          <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
-            <Flower className='h-6 w-6 text-indigo-500' />
+          <div className='mx-auto rounded-full flex items-center justify-center'>
+            <Image src='/logo.jpg' alt='Creators Cloud' width={48} height={48} />
           </div>
-          <CardTitle className='text-2xl font-bold text-indigo-700'>
-            Better Auth
+          <CardTitle className='text-2xl font-bold text-orange-700'>
+            Creators Cloud
           </CardTitle>
           <CardDescription>
-            Secure authentication with a beautiful interface
+            Access your account and manage your content.
           </CardDescription>
         </CardHeader>
         <CardContent className='space-y-4'>
           <p className='text-center text-muted-foreground'>
-            Welcome to Better Auth, a simple and secure authentication system
-            with a modern interface.
+            Welcome to Creators Cloud.
           </p>
           <div className='grid gap-4'>
             {session ? (
               <>
                 <Link href='/dashboard' className='w-full'>
-                  <Button className='w-full bg-indigo-600 hover:bg-indigo-700'>
+                  <Button className='w-full bg-orange-600 hover:bg-orange-700'>
                     Dashboard
                   </Button>
                 </Link>
                 <Button
                   variant='outline'
-                  className='w-full border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+                  className='w-full border-orange-200 text-orange-700 hover:bg-orange-50'
                   onClick={() => authClient.signOut()}
                 >
                   Logout
@@ -100,7 +100,7 @@ export default function Home() {
                 <div className='grid grid-cols-2 gap-4 hidden'>
                   <Button
                     variant='outline'
-                    className='border-indigo-200'
+                    className='border-orange-200'
                     onClick={handleGithubLogin}
                     disabled={isGithubLoading}
                   >
@@ -114,7 +114,7 @@ export default function Home() {
                   <Button
                     variant='outline'
                     type='button'
-                    className='border-indigo-200'
+                    className='border-orange-200'
                     onClick={handleGoogleLogin}
                     disabled={isGoogleLoading}
                   >
@@ -156,14 +156,14 @@ export default function Home() {
                 </div>
                 <div className='flex flex-col space-y-2'>
                   <Link href='/auth/login' className='w-full'>
-                    <Button className='w-full bg-indigo-600 hover:bg-indigo-700'>
+                    <Button className='w-full bg-orange-600 hover:bg-orange-700'>
                       Login with Email
                     </Button>
                   </Link>
                   <Link href='/auth/register' className='w-full'>
                     <Button
                       variant='outline'
-                      className='w-full border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+                      className='w-full border-orange-200 text-orange-700 hover:bg-orange-50'
                     >
                       Register
                     </Button>
@@ -173,7 +173,7 @@ export default function Home() {
             )}
           </div>
         </CardContent>
-        <CardFooter className='flex justify-center border-t border-indigo-100 pt-4'>
+        <CardFooter className='flex justify-center border-t border-orange-100 pt-4'>
           <p className='text-xs text-muted-foreground'>
             &copy; {new Date().getFullYear()} Creators Cloud
           </p>

@@ -3,6 +3,7 @@
 import React, { Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
+import Image from 'next/image'
 import Link from 'next/link'
 import { toast } from 'sonner'
 import {
@@ -11,7 +12,6 @@ import {
   Eye,
   EyeOff,
   ArrowLeft,
-  Flower,
   CheckCircle,
 } from 'lucide-react'
 import { authClient } from '~/lib/auth'
@@ -151,13 +151,13 @@ function ResetPasswordForm() {
   // If no token is provided, show an error
   if (!token && !isSuccess) {
     return (
-      <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-        <Card className='w-full max-w-md border-indigo-200'>
+      <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+        <Card className='w-full max-w-md border-orange-200'>
           <CardHeader className='text-center'>
-            <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
-              <Flower className='h-6 w-6 text-indigo-500' />
+            <div className='mx-auto rounded-full flex items-center justify-center'>
+              <Image src='/logo.jpg' alt='Creators Cloud' width={48} height={48} />
             </div>
-            <CardTitle className='text-2xl font-bold text-indigo-700'>
+            <CardTitle className='text-2xl font-bold text-orange-700'>
               Invalid Reset Link
             </CardTitle>
             <CardDescription>
@@ -169,7 +169,7 @@ function ResetPasswordForm() {
               Please request a new password reset link to continue.
             </p>
             <Link href='/forgot-password' className='w-full block'>
-              <Button className='w-full bg-indigo-600 hover:bg-indigo-700'>
+              <Button className='w-full bg-orange-600 hover:bg-orange-700'>
                 Request New Link
               </Button>
             </Link>
@@ -177,7 +177,7 @@ function ResetPasswordForm() {
           <CardFooter className='flex justify-center'>
             <Link
               href='/login'
-              className='text-indigo-600 hover:underline text-sm flex items-center'
+              className='text-orange-600 hover:underline text-sm flex items-center'
             >
               <ArrowLeft className='mr-1 h-3 w-3' />
               Back to login
@@ -190,9 +190,12 @@ function ResetPasswordForm() {
 
   if (isSuccess) {
     return (
-      <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-        <Card className='w-full max-w-md border-indigo-200'>
+      <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+        <Card className='w-full max-w-md border-orange-200'>
           <CardHeader className='text-center'>
+            <div className='mx-auto rounded-full flex items-center justify-center'>
+              <Image src='/logo.jpg' alt='Creators Cloud' width={48} height={48} />
+            </div>
             <div className='mx-auto bg-green-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
               <CheckCircle className='h-6 w-6 text-green-500' />
             </div>
@@ -209,7 +212,7 @@ function ResetPasswordForm() {
             </p>
             <div className='flex flex-col items-center justify-center gap-3'>
               <Button
-                className='w-full bg-indigo-600 hover:bg-indigo-700'
+                className='w-full bg-orange-600 hover:bg-orange-700'
                 disabled
               >
                 <Loader2 className='h-4 w-4 animate-spin' />
@@ -223,13 +226,13 @@ function ResetPasswordForm() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-      <Card className='w-full max-w-md border-indigo-200'>
+    <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+      <Card className='w-full max-w-md border-orange-200'>
         <CardHeader className='text-center'>
-          <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
-            <Lock className='h-6 w-6 text-indigo-500' />
+          <div className='mx-auto bg-orange-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
+            <Lock className='h-6 w-6 text-orange-500' />
           </div>
-          <CardTitle className='text-2xl font-bold text-indigo-700'>
+          <CardTitle className='text-2xl font-bold text-orange-700'>
             Reset Password
           </CardTitle>
           <CardDescription>
@@ -265,7 +268,7 @@ function ResetPasswordForm() {
                           placeholder='Enter your new password'
                           {...field}
                           onChange={onPasswordChange}
-                          className='border-indigo-200 focus-visible:ring-indigo-500 pr-10'
+                          className='border-orange-200 focus-visible:ring-orange-500 pr-10'
                         />
                       </FormControl>
                       <Button
@@ -335,7 +338,7 @@ function ResetPasswordForm() {
                           type={showConfirmPassword ? 'text' : 'password'}
                           placeholder='Confirm your new password'
                           {...field}
-                          className='border-indigo-200 focus-visible:ring-indigo-500 pr-10'
+                          className='border-orange-200 focus-visible:ring-orange-500 pr-10'
                         />
                       </FormControl>
                       <Button
@@ -366,7 +369,7 @@ function ResetPasswordForm() {
 
               <Button
                 type='submit'
-                className='w-full bg-indigo-600 hover:bg-indigo-700'
+                className='w-full bg-orange-600 hover:bg-orange-700'
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -384,7 +387,7 @@ function ResetPasswordForm() {
         <CardFooter className='flex justify-center'>
           <Link
             href='/login'
-            className='text-indigo-600 hover:underline text-sm flex items-center'
+            className='text-orange-600 hover:underline text-sm flex items-center'
           >
             <ArrowLeft className='mr-1 h-3 w-3' />
             Back to login
@@ -400,10 +403,10 @@ export default function ResetPassword() {
   return (
     <Suspense
       fallback={
-        <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
+        <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
           <div className='text-center'>
-            <Loader2 className='h-8 w-8 animate-spin mx-auto text-indigo-500' />
-            <p className='mt-2 text-indigo-700'>Loading...</p>
+            <Loader2 className='h-8 w-8 animate-spin mx-auto text-orange-500' />
+            <p className='mt-2 text-orange-700'>Loading...</p>
           </div>
         </div>
       }

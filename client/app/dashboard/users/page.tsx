@@ -250,7 +250,7 @@ export default function AdminUsers() {
     switch (role) {
       case 'Admin':
         return (
-          <Badge className='bg-indigo-600 hover:bg-indigo-700'>{role}</Badge>
+          <Badge className='bg-orange-600 hover:bg-orange-700'>{role}</Badge>
         )
       case 'Moderator':
         return <Badge className='bg-blue-500 hover:bg-blue-600'>{role}</Badge>
@@ -294,22 +294,22 @@ export default function AdminUsers() {
           <Button
             variant='outline'
             size='sm'
-            className='border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+            className='border-orange-200 text-orange-700 hover:bg-orange-50'
             onClick={exportUsers}
           >
             <Download className='mr-2 h-4 w-4' />
             Export
           </Button>
-          <Button size='sm' className='bg-indigo-600 hover:bg-indigo-700'>
+          <Button size='sm' className='bg-orange-600 hover:bg-orange-700'>
             <UserPlus className='mr-2 h-4 w-4' />
             Add User
           </Button>
         </div>
       </div>
 
-      <Card className='border-indigo-200'>
+      <Card className='border-orange-200'>
         <CardHeader className='pb-2'>
-          <CardTitle className='text-xl font-bold text-indigo-700 flex items-center'>
+          <CardTitle className='text-xl font-bold text-orange-700 flex items-center'>
             <Shield className='mr-2 h-5 w-5' />
             All Users
           </CardTitle>
@@ -325,7 +325,7 @@ export default function AdminUsers() {
               <Search className='absolute left-2 top-2.5 h-4 w-4 text-gray-400' />
               <Input
                 placeholder='Search users...'
-                className='pl-8 border-indigo-200 focus-visible:ring-indigo-500'
+                className='pl-8 border-orange-200 focus-visible:ring-orange-500'
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -333,11 +333,11 @@ export default function AdminUsers() {
             <div className='flex space-x-2'>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant='outline' className='border-indigo-200'>
+                  <Button variant='outline' className='border-orange-200'>
                     <Filter className='mr-2 h-4 w-4' />
                     Status
                     {statusFilter && (
-                      <Badge className='ml-2 bg-indigo-100 text-indigo-800'>
+                      <Badge className='ml-2 bg-orange-100 text-orange-800'>
                         {statusFilter}
                       </Badge>
                     )}
@@ -365,11 +365,11 @@ export default function AdminUsers() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant='outline' className='border-indigo-200'>
+                  <Button variant='outline' className='border-orange-200'>
                     <Filter className='mr-2 h-4 w-4' />
                     Role
                     {roleFilter && (
-                      <Badge className='ml-2 bg-indigo-100 text-indigo-800'>
+                      <Badge className='ml-2 bg-orange-100 text-orange-800'>
                         {roleFilter}
                       </Badge>
                     )}
@@ -395,13 +395,13 @@ export default function AdminUsers() {
             </div>
           </div>
 
-          <div className='rounded-md border border-indigo-100 overflow-hidden'>
+          <div className='rounded-md border border-orange-100 overflow-hidden'>
             <Table>
-              <TableHeader className='bg-indigo-50'>
+              <TableHeader className='bg-orange-50'>
                 <TableRow>
                   <TableHead className='w-[250px]'>
                     <button
-                      className='flex items-center font-medium text-indigo-900'
+                      className='flex items-center font-medium text-orange-900'
                       onClick={() => handleSort('name')}
                     >
                       User
@@ -415,7 +415,7 @@ export default function AdminUsers() {
                   </TableHead>
                   <TableHead>
                     <button
-                      className='flex items-center font-medium text-indigo-900'
+                      className='flex items-center font-medium text-orange-900'
                       onClick={() => handleSort('role')}
                     >
                       Role
@@ -429,7 +429,7 @@ export default function AdminUsers() {
                   </TableHead>
                   <TableHead>
                     <button
-                      className='flex items-center font-medium text-indigo-900'
+                      className='flex items-center font-medium text-orange-900'
                       onClick={() => handleSort('status')}
                     >
                       Status
@@ -443,7 +443,7 @@ export default function AdminUsers() {
                   </TableHead>
                   <TableHead>
                     <button
-                      className='flex items-center font-medium text-indigo-900'
+                      className='flex items-center font-medium text-orange-900'
                       onClick={() => handleSort('lastActive')}
                     >
                       Last Active
@@ -457,7 +457,7 @@ export default function AdminUsers() {
                   </TableHead>
                   <TableHead>
                     <button
-                      className='flex items-center font-medium text-indigo-900'
+                      className='flex items-center font-medium text-orange-900'
                       onClick={() => handleSort('joinedDate')}
                     >
                       Joined
@@ -475,7 +475,7 @@ export default function AdminUsers() {
               <TableBody>
                 {filteredUsers.length > 0 ? (
                   filteredUsers.map((user) => (
-                    <TableRow key={user.id} className='hover:bg-indigo-50/50'>
+                    <TableRow key={user.id} className='hover:bg-orange-50/50'>
                       <TableCell className='font-medium'>
                         <div className='flex items-center space-x-3'>
                           <Avatar className='h-8 w-8'>
@@ -483,7 +483,7 @@ export default function AdminUsers() {
                               src={`/placeholder.svg?height=32&width=32`}
                               alt={user.name}
                             />
-                            <AvatarFallback className='bg-indigo-100 text-indigo-700 text-xs'>
+                            <AvatarFallback className='bg-orange-100 text-orange-700 text-xs'>
                               {user.name
                                 .split(' ')
                                 .map((n) => n[0])
@@ -642,7 +642,7 @@ export default function AdminUsers() {
                   src={`/placeholder.svg?height=40&width=40`}
                   alt={selectedUser.name}
                 />
-                <AvatarFallback className='bg-indigo-100 text-indigo-700'>
+                <AvatarFallback className='bg-orange-100 text-orange-700'>
                   {selectedUser.name
                     .split(' ')
                     .map((n) => n[0])

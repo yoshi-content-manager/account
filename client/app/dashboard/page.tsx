@@ -27,9 +27,9 @@ export default function Dashboard() {
       </h1>
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-        <Card className='border-indigo-200'>
+        <Card className='border-orange-200'>
           <CardHeader>
-            <CardTitle className='text-indigo-700 flex items-center'>
+            <CardTitle className='text-orange-700 flex items-center'>
               <User className='mr-2 h-5 w-5' />
               Profile
             </CardTitle>
@@ -42,7 +42,7 @@ export default function Dashboard() {
                   src='/placeholder.svg?height=80&width=80'
                   alt={user.name}
                 />
-                <AvatarFallback className='bg-indigo-100 text-indigo-700 text-xl'>
+                <AvatarFallback className='bg-orange-100 text-orange-700 text-xl'>
                   {user.name
                     .split(' ')
                     .map((n) => n[0])
@@ -65,7 +65,7 @@ export default function Dashboard() {
               <Link href='/dashboard/profile' className='w-full block'>
                 <Button
                   variant='outline'
-                  className='mt-4 w-full border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+                  className='mt-4 w-full border-orange-200 text-orange-700 hover:bg-orange-50'
                 >
                   View Profile
                 </Button>
@@ -74,9 +74,9 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className='border-indigo-200'>
+        <Card className='border-orange-200'>
           <CardHeader>
-            <CardTitle className='text-indigo-700 flex items-center'>
+            <CardTitle className='text-orange-700 flex items-center'>
               <Settings className='mr-2 h-5 w-5' />
               Account Settings
             </CardTitle>
@@ -87,20 +87,20 @@ export default function Dashboard() {
               <Link href='/dashboard/change-password' className='w-full block'>
                 <Button
                   variant='outline'
-                  className='w-full justify-start border-indigo-200 text-gray-700 hover:bg-indigo-50'
+                  className='w-full justify-start border-orange-200 text-gray-700 hover:bg-orange-50'
                 >
                   Change Password
                 </Button>
               </Link>
               <Button
                 variant='outline'
-                className='w-full justify-start border-indigo-200 text-gray-700 hover:bg-indigo-50'
+                className='w-full justify-start border-orange-200 text-gray-700 hover:bg-orange-50'
               >
                 Two-Factor Authentication
               </Button>
               <Button
                 variant='outline'
-                className='w-full justify-start border-indigo-200 text-gray-700 hover:bg-indigo-50'
+                className='w-full justify-start border-orange-200 text-gray-700 hover:bg-orange-50'
               >
                 Privacy Settings
               </Button>
@@ -108,9 +108,9 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card className='border-indigo-200'>
+        <Card className='border-orange-200'>
           <CardHeader>
-            <CardTitle className='text-indigo-700 flex items-center'>
+            <CardTitle className='text-orange-700 flex items-center'>
               <Bell className='mr-2 h-5 w-5' />
               Notifications
             </CardTitle>
@@ -118,8 +118,8 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className='space-y-4'>
-              <div className='p-3 bg-indigo-50 rounded-md border border-indigo-100'>
-                <p className='text-sm font-medium text-indigo-700'>
+              <div className='p-3 bg-orange-50 rounded-md border border-orange-100'>
+                <p className='text-sm font-medium text-orange-700'>
                   Welcome to Better Auth!
                 </p>
                 <p className='text-xs text-gray-600 mt-1'>
@@ -136,7 +136,7 @@ export default function Dashboard() {
               </div>
               <Button
                 variant='outline'
-                className='w-full border-indigo-200 text-indigo-700 hover:bg-indigo-50'
+                className='w-full border-orange-200 text-orange-700 hover:bg-orange-50'
               >
                 View All Notifications
               </Button>

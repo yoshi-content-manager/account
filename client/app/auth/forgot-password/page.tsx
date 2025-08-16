@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { toast } from 'sonner'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
@@ -62,13 +63,13 @@ export default function ForgotPassword() {
   }
 
   return (
-    <div className='min-h-screen bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center p-4'>
-      <Card className='w-full max-w-md border-indigo-200'>
+    <div className='min-h-screen bg-gradient-to-b from-orange-50 to-white flex flex-col items-center justify-center p-4'>
+      <Card className='w-full max-w-md border-orange-200'>
         <CardHeader className='text-center'>
-          <div className='mx-auto bg-indigo-100 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-2'>
-            <Flower className='h-6 w-6 text-indigo-500' />
+          <div className='mx-auto rounded-full flex items-center justify-center'>
+          <Image src='/logo.jpg' alt='Creators Cloud' width={48} height={48} />
           </div>
-          <CardTitle className='text-2xl font-bold text-indigo-700'>
+          <CardTitle className='text-2xl font-bold text-orange-700'>
             Reset Password
           </CardTitle>
           <CardDescription>
@@ -101,7 +102,7 @@ export default function ForgotPassword() {
                         <Input
                           placeholder='name@example.com'
                           {...field}
-                          className='border-indigo-200 focus-visible:ring-indigo-500'
+                          className='border-orange-200 focus-visible:ring-orange-500'
                         />
                       </FormControl>
                       <FormMessage />
@@ -110,7 +111,7 @@ export default function ForgotPassword() {
                 />
                 <Button
                   type='submit'
-                  className='w-full bg-indigo-600 hover:bg-indigo-700'
+                  className='w-full bg-orange-600 hover:bg-orange-700'
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -126,12 +127,12 @@ export default function ForgotPassword() {
             </Form>
           ) : (
             <div className='space-y-4'>
-              <div className='p-4 bg-indigo-50 border border-indigo-200 rounded-md text-indigo-700 text-sm'>
+              <div className='p-4 bg-orange-50 border border-orange-200 rounded-md text-orange-700 text-sm'>
                 Check your email for instructions to reset your password.
               </div>
               <Button
                 onClick={() => router.push('/auth/login')}
-                className='w-full bg-indigo-600 hover:bg-indigo-700'
+                className='w-full bg-orange-600 hover:bg-orange-700'
               >
                 Return to Login
               </Button>
@@ -142,7 +143,7 @@ export default function ForgotPassword() {
           {!isSubmitted && (
             <Link
               href='/auth/login'
-              className='text-indigo-600 hover:underline text-sm flex items-center'
+              className='text-orange-600 hover:underline text-sm flex items-center'
             >
               <ArrowLeft className='mr-1 h-3 w-3' />
               Back to login
